@@ -148,3 +148,109 @@ html[data-theme="light"] .slider{background:#e7eaf4}
 .form-toast.ok{background:rgba(34,197,94,.12); color:#bdf3cf; border-color:rgba(34,197,94,.35)}
 .form-toast.err{background:rgba(239,68,68,.12); color:#ffd2d2; border-color:rgba(239,68,68,.35)}
 @media (max-width:720px){ .contact-form .row{grid-template-columns:1fr} }
+
+/* =========================
+   RESPONSIVIDADE
+   Cole no FINAL do style.css
+   ========================= */
+
+/* Base: imagens sempre fluidas */
+img{max-width:100%; height:auto; display:block}
+
+/* Cards de projetos: garante thumbnail com corte bonito */
+.card .project-body{padding:16px}
+.card img{
+  width:100%;
+  aspect-ratio: 16 / 9;      /* mantém proporção em qualquer tela */
+  object-fit: cover;
+  border-top-left-radius:16px;
+  border-top-right-radius:16px;
+}
+
+/* Grid inteligente: 3 → 2 → 1 col */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap:24px;
+}
+@media (max-width: 1024px){
+  .grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 640px){
+  .grid{ grid-template-columns: 1fr; gap:16px; }
+}
+
+/* Topbar + menu mobile */
+.topbar{
+  position:sticky; top:0; z-index:20;
+  display:flex; align-items:center; gap:12px;
+  padding:12px 16px;
+  backdrop-filter: blur(8px);
+}
+.icon-btn#btnMenu{ display:none; }
+
+@media (max-width: 768px){
+  .icon-btn#btnMenu{ display:inline-flex; }
+  .logo{ gap:8px; }
+  .brand{ font-size:16px; }
+
+  /* nav vira dropdown */
+  .nav{
+    position: absolute;
+    top:56px; left:12px; right:12px;
+    display:none; flex-direction:column; gap:8px;
+    background: rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:12px; padding:12px;
+  }
+  .nav a{ padding:10px 12px; }
+  .nav.open{ display:flex; }
+}
+
+/* Hero: stack e centraliza no mobile */
+.hero{
+  display:grid; grid-template-columns: 1.1fr .9fr; gap:32px; align-items:center;
+}
+@media (max-width: 1024px){
+  .hero{ grid-template-columns: 1fr; gap:24px; text-align:center; }
+  .hero .cta{ justify-content:center; }
+  .hero-blob{ max-width: 420px; margin: 0 auto; }
+}
+
+/* Tipografia + espaçamento por breakpoint */
+h1{ font-size: clamp(24px, 3vw + 8px, 42px); line-height:1.15 }
+h2{ font-size: clamp(20px, 2vw + 6px, 28px) }
+
+.section{ padding: clamp(32px, 6vw, 72px) 16px; }
+.subtitle{ font-size: clamp(14px, 1.4vw + 6px, 18px); opacity:.9 }
+.lead{ font-size: clamp(14px, 1.2vw + 6px, 18px) }
+
+.cta{ display:flex; gap:12px; flex-wrap:wrap }
+@media (max-width: 480px){
+  .cta .btn{ width:100%; justify-content:center }
+}
+
+/* KPIs quebram bem no mobile */
+.kpis{ display:grid; grid-template-columns: repeat(3,1fr); gap:12px; }
+@media (max-width: 640px){
+  .kpis{ grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .kpi{ padding:10px }
+  .kpi-num{ font-size: 22px }
+}
+
+/* Form de contato: duas colunas → uma */
+.contact-form .row{
+  display:grid; grid-template-columns: 1fr 1fr; gap:12px;
+}
+@media (max-width: 640px){
+  .contact-form .row{ grid-template-columns: 1fr; }
+}
+
+/* Canvas de partículas garante cobertura total também no mobile */
+#bg-particles{
+  position: fixed; inset:0; width:100%; height:100%;
+  pointer-events:none; z-index:0;
+}
+main, .topbar, .footer{ position:relative; z-index:1; }
+
+
