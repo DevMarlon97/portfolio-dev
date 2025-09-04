@@ -194,7 +194,7 @@ h2{ font-size: clamp(20px, 2.4vw, 28px) }
   .sobre-grid{ grid-template-columns:1fr; }
 }
 
-/* ===== NAV MOBILE – bloco único ===== */
+/* NAV MOBILE */
 @media (max-width: 768px){
   .icon-btn#btnMenu{ display:inline-flex; }
   .nav{
@@ -206,7 +206,6 @@ h2{ font-size: clamp(20px, 2.4vw, 28px) }
     border-radius:10px; padding:10px;
     z-index:30;
   }
-  /* abre pelos dois jeitos */
   #nav.open{ display:flex; }
   .topbar.open .nav{ display:flex; }
   .brand{ font-size:16px; }
@@ -221,6 +220,6 @@ h2{ font-size: clamp(20px, 2.4vw, 28px) }
 
 @media (max-width:480px){
   .cta .btn{ width:100%; justify-content:center }
+  /* Fallback para nunca esconder seções no celular */
+  .revelar{ opacity:1; transform:none; }
 }
-
-
