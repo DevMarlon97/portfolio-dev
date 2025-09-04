@@ -106,13 +106,12 @@
       <h2>Projetos</h2>
       <div class="grid">
         <!-- 1) Planner de Casamento -->
-       <!-- dentro do article do Casamento -->
-<article class="card projeto tilt"
-         data-viewer
-         data-image="./casamento-hero.png"
-         data-title="Planner de Casamento — Convidados &amp; Orçamento"
-         data-desc="Gerencie a lista de convidados ...">
-  <img src="./casamento-hero.png" alt="Planner de Casamento — tela com convidados e orçamento">
+        <article class="card projeto tilt"
+                 data-viewer
+                 data-image="casamento.png"
+                 data-title="Planner de Casamento — Convidados &amp; Orçamento"
+                 data-desc="Gerencie a lista de convidados (confirmação, remoção de duplicatas e importação em massa) e controle o orçamento com resumo de pagamentos e status por item.">
+          <img src="casamento.png" alt="Planner de Casamento — tela com convidados e orçamento">
           <div class="project-body">
             <h3>Planner de Casamento — Convidados &amp; Orçamento</h3>
             <p>Módulos de convidados e orçamento, importação em massa e UX focada em clareza.</p>
@@ -162,52 +161,53 @@
       </div>
     </section>
 
-  <!-- CONTATO -->
-<section id="contato" class="section revelar">
-  <h2>Contato</h2>
-  <p>Quer construir algo de impacto? Me manda uma mensagem 👇</p>
+    <!-- CONTATO -->
+    <section id="contato" class="section revelar">
+      <h2>Contato</h2>
+      <p>Quer construir algo de impacto? Me manda uma mensagem 👇</p>
 
-  <form id="contatoForm" class="contact-form" autocomplete="on" novalidate>
-    <!-- anti-bot (honeypot) -->
-    <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <form id="contatoForm" class="contact-form" autocomplete="on" novalidate>
+        <!-- anti-bot (honeypot) -->
+        <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-    <div class="row">
-      <label class="field">
-        <span>Nome</span>
-        <input type="text" name="nome" placeholder="Seu nome" required>
-      </label>
+        <div class="row">
+          <label class="field">
+            <span>Nome</span>
+            <input type="text" name="nome" placeholder="Seu nome" required>
+          </label>
 
-      <label class="field">
-        <span>E-mail</span>
-        <input type="email" name="email" placeholder="voce@email.com" required>
-      </label>
-    </div>
+          <label class="field">
+            <span>E-mail</span>
+            <input type="email" name="email" placeholder="voce@email.com" required>
+          </label>
+        </div>
 
-    <label class="field">
-      <span>Assunto</span>
-      <input type="text" name="assunto" placeholder="Sobre qual projeto?" required>
-    </label>
+        <label class="field">
+          <span>Assunto</span>
+          <input type="text" name="assunto" placeholder="Sobre qual projeto?" required>
+        </label>
 
-    <label class="field">
-      <span>Mensagem</span>
-      <textarea name="mensagem" rows="6" placeholder="Conte um pouco da sua ideia ou necessidade..." required></textarea>
-    </label>
+        <label class="field">
+          <span>Mensagem</span>
+          <textarea name="mensagem" rows="6" placeholder="Conte um pouco da sua ideia ou necessidade..." required></textarea>
+        </label>
 
-    <label class="check">
-      <input type="checkbox" name="consent" required>
-      <span>Autorizo contato para responder esta mensagem.</span>
-    </label>
+        <label class="check">
+          <input type="checkbox" name="consent" required>
+          <span>Autorizo contato para responder esta mensagem.</span>
+        </label>
 
-    <div class="actions">
-      <button type="submit" class="btn primary">Enviar mensagem</button>
-      <a class="btn" id="btnWhats" target="_blank" rel="noopener">Falar no WhatsApp</a>
-    </div>
+        <div class="actions">
+          <button type="submit" class="btn primary">Enviar mensagem</button>
+          <a class="btn" id="btnWhats" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        </div>
 
-    <p class="form-tip">Prefere e-mail direto? <a id="mailtoLink" href="#">Clique aqui</a>.</p>
+        <p class="form-tip">Prefere e-mail direto? <a id="mailtoLink" href="#">Clique aqui</a>.</p>
 
-    <div class="form-toast" role="status" aria-live="polite" hidden></div>
-  </form>
-</section>
+        <div class="form-toast" role="status" aria-live="polite" hidden></div>
+      </form>
+    </section>
+  </main>
 
   <footer class="footer">
     © <span id="ano"></span> Marlon. Feito com ♥ e café.
@@ -216,6 +216,3 @@
   <script src="app.js"></script>
 </body>
 </html>
-
-
-
