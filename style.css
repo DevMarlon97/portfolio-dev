@@ -250,3 +250,18 @@ h2{ font-size: clamp(20px, 2.4vw, 28px) }
 @media (max-width:480px){
   .cta .btn{ width:100%; justify-content:center }
 }
+
+@media (max-width: 768px){
+  .nav{
+    display:none;
+    position:absolute; top:60px; right:10px; left:10px;
+    flex-direction:column; gap:8px;
+    background:var(--card); border:1px solid var(--line);
+    border-radius:10px; padding:10px; z-index:30;
+  }
+  /* Abre se a classe open estiver no próprio nav */
+  #nav.open{ display:flex; }
+  /* ...ou se a classe open estiver na topbar (modo antigo) */
+  .topbar.open .nav{ display:flex; }
+}
+
