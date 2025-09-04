@@ -1,6 +1,4 @@
-/* =====================
-   Design Tokens
-   ===================== */
+/* ===================== Design Tokens ===================== */
 :root{
   --bg:#0f1220; --card:#141827; --text:#e9ecf2; --muted:#a3acc2; --line:#2a2f43;
   --primary:#8b5cf6; --primary-2:#6d28d9; --btn:#23283d;
@@ -9,9 +7,7 @@ html[data-theme="light"]{
   --bg:#f7f8fc; --card:#ffffff; --text:#0e1220; --muted:#5c647a; --line:#e7eaf4; --btn:#f0f1f6;
 }
 
-/* =====================
-   Base / Reset
-   ===================== */
+/* ===================== Base / Reset ===================== */
 *{box-sizing:border-box}
 html,body{height:100%}
 html,body{overflow-x:hidden}
@@ -25,9 +21,7 @@ img{max-width:100%; height:auto; display:block}
 /* partículas de fundo */
 #bg-particles{position:fixed; inset:0; z-index:-1}
 
-/* =====================
-   Topbar / Navegação
-   ===================== */
+/* ===================== Topbar / Navegação ===================== */
 .topbar{
   height:60px; display:flex; align-items:center; gap:12px;
   padding:0 16px; background:var(--card);
@@ -49,9 +43,7 @@ html[data-theme="light"] .slider{background:#e7eaf4}
 .switch input:checked + .slider::after{transform:translateX(26px)}
 .divider{height:2px; background:linear-gradient(90deg,var(--primary),transparent)}
 
-/* =====================
-   Seções / Tipografia
-   ===================== */
+/* ===================== Seções / Tipografia ===================== */
 .section{max-width:1100px; margin:0 auto; padding:64px 16px}
 .section h2{font-size:28px; margin:0 0 14px}
 h1{ font-size: clamp(26px, 5vw, 54px); line-height:1.1; margin:0 0 8px }
@@ -69,9 +61,7 @@ h2{ font-size: clamp(20px, 2.4vw, 28px) }
 .btn.primary{background:linear-gradient(90deg,var(--primary),var(--primary-2)); color:#fff; border:none}
 .cta{display:flex; gap:12px; flex-wrap:wrap}
 
-/* =====================
-   Hero
-   ===================== */
+/* ===================== Hero ===================== */
 .hero{
   display:grid; grid-template-columns:1.15fr .85fr;
   align-items:center; gap:28px
@@ -94,9 +84,7 @@ h2{ font-size: clamp(20px, 2.4vw, 28px) }
 .blob-glow{position:absolute; width:80%; height:80%; border-radius:50%; background:radial-gradient(circle, rgba(139,92,246,.25), transparent 70%); filter:blur(18px); z-index:-1}
 @keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(-1deg)}}
 
-/* =====================
-   Sobre
-   ===================== */
+/* ===================== Sobre ===================== */
 .sobre-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:20px; align-items:start}
 .bullets{margin:8px 0 0 0; padding-left:18px}
 .bullets li{margin:6px 0}
@@ -105,17 +93,13 @@ h2{ font-size: clamp(20px, 2.4vw, 28px) }
 .kpi-num{display:block; font-size:28px; font-weight:800; background:linear-gradient(90deg,var(--primary),var(--primary-2)); -webkit-background-clip:text; background-clip:text; color:transparent}
 .kpi-label{font-size:13px; color:var(--muted)}
 
-/* =====================
-   Tecnologias
-   ===================== */
+/* ===================== Tecnologias ===================== */
 .tech-icons{display:flex; flex-wrap:wrap; gap:18px; align-items:center}
 .tech-icons i{font-size:3rem; transition:transform .25s, filter .25s}
 .tech-icons i:hover{transform:translateY(-6px) scale(1.08); filter:drop-shadow(0 8px 18px rgba(124,58,237,.35))}
 .dica{color:var(--muted); margin-top:10px}
 
-/* =====================
-   Projetos (Cards + Grid)
-   ===================== */
+/* ===================== Projetos (Cards + Grid) ===================== */
 #projetos .grid{
   display:grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
@@ -148,9 +132,7 @@ h2{ font-size: clamp(20px, 2.4vw, 28px) }
 .revelar{opacity:0; transform:translateY(18px); transition:opacity .6s, transform .6s}
 .revelar-in{opacity:1; transform:none}
 
-/* =====================
-   Viewer Fullscreen
-   ===================== */
+/* ===================== Viewer Fullscreen ===================== */
 .viewer{
   position:fixed; inset:0; z-index:10000;
   display:none; align-items:center; justify-content:center;
@@ -178,9 +160,7 @@ h2{ font-size: clamp(20px, 2.4vw, 28px) }
 }
 .viewer__title{font-weight:700}
 
-/* =====================
-   Formulário de Contato
-   ===================== */
+/* ===================== Formulário de Contato ===================== */
 .contact-form{
   margin-top:16px; display:grid; gap:14px;
   background:rgba(255,255,255,.03); border:1px solid var(--line);
@@ -206,9 +186,7 @@ h2{ font-size: clamp(20px, 2.4vw, 28px) }
 .form-toast.ok{background:rgba(34,197,94,.12); color:#bdf3cf; border-color:rgba(34,197,94,.35)}
 .form-toast.err{background:rgba(239,68,68,.12); color:#ffd2d2; border-color:rgba(239,68,68,.35)}
 
-/* =====================
-   Breakpoints
-   ===================== */
+/* ===================== Breakpoints ===================== */
 @media (max-width:1024px){
   .hero{ grid-template-columns:1fr; gap:24px; text-align:center; }
   .hero .cta{ justify-content:center; }
@@ -228,6 +206,7 @@ h2{ font-size: clamp(20px, 2.4vw, 28px) }
     border-radius:10px; padding:10px;
     z-index:30;
   }
+  /* abre pelos dois jeitos */
   #nav.open{ display:flex; }
   .topbar.open .nav{ display:flex; }
   .brand{ font-size:16px; }
@@ -243,4 +222,5 @@ h2{ font-size: clamp(20px, 2.4vw, 28px) }
 @media (max-width:480px){
   .cta .btn{ width:100%; justify-content:center }
 }
+
 
