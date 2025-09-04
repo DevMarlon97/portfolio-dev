@@ -41,7 +41,7 @@ const pts = Array.from({length:70}, ()=>({
   requestAnimationFrame(loop);
 })();
 
-// Reveal e navegação ativa
+// Reveal e navegação ativa (mais tolerante no mobile)
 const links = [...document.querySelectorAll('.nav a')];
 const obs = new IntersectionObserver((ents)=>{
   ents.forEach(en=>{
@@ -51,8 +51,16 @@ const obs = new IntersectionObserver((ents)=>{
       if(en.target.id==='sobre') startCounters();
     }
   });
-},{ rootMargin:'-35% 0px -55% 0px', threshold:0.1 });
+},{
+  rootMargin: '-10% 0px -10% 0px',
+  threshold: 0
+});
 document.querySelectorAll('.section').forEach(s=>obs.observe(s));
+
+// Fallback extra: se algo ficar oculto, revela tudo após 1s
+setTimeout(()=>{
+  document.querySelectorAll('.revelar:not(.revelar-in)').forEach(el=>el.classList.add('revelar-in'));
+}, 1000);
 
 // Tilt nos cards
 document.querySelectorAll('.tilt').forEach(el=>{
@@ -84,7 +92,6 @@ function startCounters(){
    Viewer Fullscreen (estilo Facebook)
    =========================== */
 (() => {
-  // Cria DOM do viewer
   const viewer = document.createElement('div');
   viewer.className = 'viewer';
   viewer.setAttribute('aria-hidden','true');
@@ -102,7 +109,6 @@ function startCounters(){
   const btnClose = viewer.querySelector('.viewer__close');
   const titleEl = viewer.querySelector('.viewer__title');
   const descEl = viewer.querySelector('.viewer__desc');
-
   let lastFocus = null;
 
   function open(src, title='', desc=''){
@@ -120,12 +126,10 @@ function startCounters(){
     if(lastFocus) lastFocus.focus();
   }
 
-  // Delegação: qualquer elemento com data-viewer
   document.addEventListener('click', (ev)=>{
     const card = ev.target.closest('[data-viewer]');
     if(!card) return;
 
-    // Evita seguir link se clicarem em "Ver demo" etc
     const clickedLink = ev.target.closest('a');
     if(clickedLink) return;
 
@@ -138,7 +142,6 @@ function startCounters(){
     if(src) open(src, title, desc);
   });
 
-  // Fechamento
   btnClose.addEventListener('click', close);
   viewer.addEventListener('click', (e)=>{ if(e.target === viewer) close(); });
   document.addEventListener('keydown', (e)=>{
@@ -179,7 +182,6 @@ function buildMensagem(data){
   ].join('\n');
 }
 
-// Mailto direto
 function openMailto(data){
   const assunto = encodeURIComponent(`Contato - ${data.get('assunto')} (Portfólio)`);
   const corpo   = encodeURIComponent(buildMensagem(data));
@@ -187,7 +189,6 @@ function openMailto(data){
   window.location.href = href;
 }
 
-// WhatsApp direto
 function buildWhatsHref(data){
   const texto = encodeURIComponent(
     `Olá! Vi seu portfólio e gostaria de falar sobre:\n` +
@@ -199,7 +200,6 @@ function buildWhatsHref(data){
 }
 
 if(form){
-  // Atalhos Mailto/Whats
   mailtoLink?.addEventListener('click', (e)=>{
     e.preventDefault();
     const data = new FormData(form);
@@ -211,18 +211,13 @@ if(form){
     btnWhats.href = buildWhatsHref(data);
   });
 
-  // Submit padrão
   form.addEventListener('submit', (e)=>{
     e.preventDefault();
-
-    // Honeypot (anti-bot)
     if(form.querySelector('input[name="website"]')?.value) return;
-
     if(!form.reportValidity()){
       showToast('Preencha os campos obrigatórios.', false);
       return;
     }
-
     const data = new FormData(form);
     openMailto(data);
     showToast('Abrindo seu cliente de e-mail…', true);
