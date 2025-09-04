@@ -116,48 +116,34 @@ h2{ font-size: clamp(20px, 2.4vw, 28px) }
 /* =====================
    Projetos (Cards + Grid)
    ===================== */
-
-/* grid base para desktop */
 #projetos .grid{
   display:grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
   gap:24px;
 }
-
-/* 2 colunas em tablets */
 @media (max-width: 1024px){
   #projetos .grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
 }
-
-/* 1 coluna no celular */
 @media (max-width: 640px){
   #projetos .grid{ grid-template-columns: 1fr; gap:16px; }
 }
-
-/* card base */
 .card{
   background:rgba(255,255,255,.04);
   border:1px solid var(--line); border-radius:16px; padding:0;
   box-shadow:0 20px 60px rgba(0,0,0,.25);
-  min-width:0; /* ESSENCIAL p/ grid não forçar largura mínima */
+  min-width:0;
 }
 .project-body{padding:16px}
-
-/* thumbnail – SEM altura fixa */
 #projetos .card img{
   width:100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
   border-top-left-radius:16px; border-top-right-radius:16px;
 }
-
-/* tags/links */
 .tags{display:flex; gap:8px; flex-wrap:wrap; margin:10px 0}
 .tags span{font-size:12px; padding:6px 10px; border-radius:999px; background:rgba(124,58,237,.15); border:1px solid var(--line)}
 .links{display:flex; gap:12px}
 .links a{color:#cfd6ea}
-
-/* tilt + reveal */
 .tilt{transform-style:preserve-3d; transition:transform .12s ease}
 .revelar{opacity:0; transform:translateY(18px); transition:opacity .6s, transform .6s}
 .revelar-in{opacity:1; transform:none}
@@ -230,13 +216,20 @@ h2{ font-size: clamp(20px, 2.4vw, 28px) }
   .sobre-grid{ grid-template-columns:1fr; }
 }
 
-@media (max-width:768px){
-  /* menu hambúrguer: #nav.open é exibido */
+/* ===== NAV MOBILE – bloco único ===== */
+@media (max-width: 768px){
   .icon-btn#btnMenu{ display:inline-flex; }
-  .nav{ display:none; position:absolute; top:60px; right:10px; left:10px;
-        flex-direction:column; gap:8px; background:var(--card);
-        border:1px solid var(--line); border-radius:10px; padding:10px }
+  .nav{
+    display:none;
+    position:absolute; top:60px; right:10px; left:10px;
+    flex-direction:column; gap:8px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px; padding:10px;
+    z-index:30;
+  }
   #nav.open{ display:flex; }
+  .topbar.open .nav{ display:flex; }
   .brand{ font-size:16px; }
 }
 
@@ -249,19 +242,5 @@ h2{ font-size: clamp(20px, 2.4vw, 28px) }
 
 @media (max-width:480px){
   .cta .btn{ width:100%; justify-content:center }
-}
-
-@media (max-width: 768px){
-  .nav{
-    display:none;
-    position:absolute; top:60px; right:10px; left:10px;
-    flex-direction:column; gap:8px;
-    background:var(--card); border:1px solid var(--line);
-    border-radius:10px; padding:10px; z-index:30;
-  }
-  /* Abre se a classe open estiver no próprio nav */
-  #nav.open{ display:flex; }
-  /* ...ou se a classe open estiver na topbar (modo antigo) */
-  .topbar.open .nav{ display:flex; }
 }
 
